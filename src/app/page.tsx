@@ -1,11 +1,13 @@
 "use client";
 
 import { Plus, Trash } from "lucide-react";
+import { useState } from "react";
 
 const Home = () => {
+  const [taskInput, setTaskInput] = useState("");
   return (
     <div className="bg-slate-200 text-slate-600 h-screen">
-      <div className="bg-white w-250 mx-auto mt-20 rounded-lg p-8">
+      <div className="bg-white md:w-250 mx-auto mt-20 rounded-lg p-8">
         {/* top */}
         <div className="flex flex-col gap-10 mb-10">
           <div className="flex items-center justify-between">
@@ -17,10 +19,13 @@ const Home = () => {
               <span>completed</span>
             </div>
           </div>
-          <div className="w-full  flex items-center gap-5 justify-between ">
+          <div className="w-full  flex flex-col md:flex-row items-center gap-5 justify-between ">
             <input
               type="text"
-              className="border border-slate-300 w-3/4 h-10 rounded-md p-2 text-black outline-none focus:border-blue-500 focus:shadow-sm transition-colors duration-300"
+              value={taskInput}
+              onChange={(e) => setTaskInput(e.target.value)}
+              placeholder="Add a new task..."
+              className="border border-slate-300 w-full md:w-3/4 h-10 rounded-md p-2 text-black outline-none focus:border-blue-500 focus:shadow-sm transition-colors duration-300"
             />
             <button className="flex items-center gap-2 bg-blue-600 text-white w-fit h-8 rounded-md p-2 cursor-pointer hover:bg-blue-700 transition-colors duration-300 text-sm">
               <Plus size={18} />
